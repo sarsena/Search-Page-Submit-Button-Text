@@ -1,0 +1,37 @@
+<?php
+	
+ /**
+ * Implementation of hook_form_alter().
+ */
+
+function search_page_submit_button_text_menu(){
+	$items['admin/build/search_page_submit_button_text'] = array(
+        'title' => 'Search Page Submit Button Text',
+        'description' => 'Configure the default settings for search submit button.',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('search_page_submit_button_text_admin_form'),
+        'access callback' => 'user_access',
+        'access arguments' => array('administer search_page_submit_button_text'),
+        'type' => MENU_NORMAL_ITEM,
+        'file' => 'includes/search_page_submit_button_text_form.inc',
+    );
+    
+    return $items;
+}
+ 
+
+function search_page_submit_button_text_form_alter(&$form, $form_state, $form_id) {
+	
+	//if its the search block form (based on the id of the form which can be found by viewing the source)
+		
+	
+	if($form_id=='search_form')
+	{
+		
+		// alter the value of submit button
+		$form['basic']['inline']['submit']['#value'] = variable_get('MODIFIED_SEARCH_SUBMIT_BUTTON', 'row');
+		
+		
+		
+	}
+}

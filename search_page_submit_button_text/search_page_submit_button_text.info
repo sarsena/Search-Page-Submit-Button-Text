@@ -1,0 +1,6 @@
+; $Id:
+name = Search Page Submit Button Text
+description = Allows you to change the submit text on the search form page.
+package = Other
+version = VERSION
+core = 6.x
